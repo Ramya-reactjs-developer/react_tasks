@@ -1,23 +1,25 @@
-import "./styles.css";
 import { useEffect, useState } from "react";
 
-export default function App() {
+export default function AutoCounter() {
   const [count, setCount] = useState(0);
   const [Play, setPlay] = useState(false);
+  const [resets, setReset] = useState(true);
   const increament = () => {
     setPlay(true);
+    setReset(true);
   };
   const decreament = () => {
     setPlay(false);
   };
 
   const reset = () => {
+    setReset(false);
     setPlay(false);
   };
   useEffect(() => {
     if (Play === true) {
       setCount(count + 1);
-    } else {
+    } else if (Play === false && resets === false) {
       setCount(0);
     }
   });
